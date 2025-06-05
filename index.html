@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papelprint Gráfica - Impressão Profissional Personalizada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyan: '#00AEEF',
+                        magenta: '#EC008C',
+                        yellow: '#FFF200',
+                        key: '#000000',
+                        light: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .cmyk-gradient {
+            background: linear-gradient(90deg, #00AEEF, #EC008C, #FFF200);
+        }
+        
+        .highlight {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(236, 0, 140, 0.3);
+            z-index: -1;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .whatsapp-button {
+            background-color: #25D366;
+            transition: all 0.3s ease;
+            align-self: center;
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: scale(1.05);
+        }
+        
+        .instagram-button {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .instagram-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .step-card {
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Animated dots for loading effect */
+        @keyframes dotAnimation {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        .animated-dots::after {
+            content: '';
+            animation: dotAnimation 1.5s infinite;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://i.imgur.com/5ydbuMl.png" alt="Papelprint Logo" class="h-12">
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-magenta font-medium">Home</a>
+                <a href="#produtos" class="text-gray-700 hover:text-magenta font-medium">Produtos</a>
+                <a href="#como-funciona" class="text-gray-700 hover:text-magenta font-medium">Como Funciona</a>
+                <a href="#depoimentos" class="text-gray-700 hover:text-magenta font-medium">Depoimentos</a>
+                <a href="#contato" class="text-gray-700 hover:text-magenta font-medium">Contato</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="container mx-auto px-4 py-2 space-y-2">
+                <a href="#home" class="block text-gray-700 hover:text-magenta font-medium py-2">Home</a>
+                <a href="#produtos" class="block text-gray-700 hover:text-magenta font-medium py-2">Produtos</a>
+                <a href="#como-funciona" class="block text-gray-700 hover:text-magenta font-medium py-2">Como Funciona</a>
+                <a href="#depoimentos" class="block text-gray-700 hover:text-magenta font-medium py-2">Depoimentos</a>
+                <a href="#contato" class="block text-gray-700 hover:text-magenta font-medium py-2">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        <span class="highlight">Sua arte</span> começa aqui.
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-700 mb-8" >Impressão profissional e personalizada, direto do WhatsApp.</p>
+                    <a href="https://wa.me/5511966063828" target="_blank" class="whatsapp-button text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg">
+                        <i class="fab fa-whatsapp text-2xl mr-3"></i>
+                        Quero Personalizar no WhatsApp
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <!-- Banner -->
+                        <img src="https://i.imgur.com/G00sECq.jpeg" alt="Banner Produtos Gráficos" class="w-full h-auto rounded-xl shadow-md" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produtos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+                <span class="highlight">Nossos Produtos</span>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-48 bg-cyan flex items-center justify-center mb-4">
+                        <img viewBox="0 0 24 24" src="https://i.imgur.com/l69ngpU.png" alt="Pasta_personalizada_com_logo">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Pastas Personalizadas</h3>
+                        <p class="text-gray-600 mb-4">Pastas profissionais com sua identidade visual para destacar sua marca.</p>
+                        <a href="https://wa.me/5511966063828?text=Olá! Gostaria de um orçamento para Pastas Personalizadas" target="_blank" class="whatsapp-button text-white font-medium py-2 px-4 rounded-lg inline-flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Orçar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-48 bg-magenta flex items-center justify-center mb-4">
+                        <img viewBox="0 0 24 24" src="https://i.imgur.com/kmJnSdn.png" alt="cartao_visita_personalizado_arte">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2 2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Cartões de Visita</h3>
+                        <p class="text-gray-600 mb-4">Cartões de alta qualidade que deixam uma impressão duradoura.</p>
+                        <a href="https://wa.me/5511966063828?text=Olá! Gostaria de um orçamento para Cartões de Visita" target="_blank" class="whatsapp-button text-white font-medium py-2 px-4 rounded-lg inline-flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Orçar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-48 bg-yellow flex items-center justify-center mb-4">
+                        <img viewBox="0 0 24 24" src="https://i.imgur.com/8CM5HZO.png" alt="agenda_personalizada_logo_nome">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Agendas e Cadernos</h3>
+                        <p class="text-gray-600 mb-4">Agendas ou Cardenos personalizadas para organizar seu dia com estilo.</p>
+                        <a href="https://wa.me/5511966063828?text=Olá! Gostaria de um orçamento para Agendas ou Cadernos" target="_blank" class="whatsapp-button text-white font-medium py-2 px-4 rounded-lg inline-flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Orçar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-48 bg-cyan flex items-center justify-center mb-4">
+                        <img viewBox="0 0 24 24" src="https://i.imgur.com/50jJfAI.png" alt="caderno_personalizado_logo_nome">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Receituários</h3>
+                        <p class="text-gray-600 mb-4">Receituários de alta qualidade personalizados.</p>
+                        <a href="https://wa.me/5511966063828?text=Olá! Gostaria de um orçamento para receituarios" target="_blank" class="whatsapp-button text-white font-medium py-2 px-4 rounded-lg inline-flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Orçar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-48 bg-magenta flex items-center justify-center mb-4">
+                        <img viewBox="0 0 24 24" src="https://i.imgur.com/KGDs5fp.png" alt="receituario_empresa_papelaria_personalizado">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Kits Corporativos</h3>
+                        <p class="text-gray-600 mb-4">Kits completos para sua empresa com materiais personalizados.</p>
+                        <a href="https://wa.me/5511966063828?text=Olá! Gostaria de um orçamento para Kits Corporativos" target="_blank" class="whatsapp-button text-white font-medium py-2 px-4 rounded-lg inline-flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Orçar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-48 bg-magenta flex items-center justify-center mb-4">
+                        <img viewBox="0 0 24 24" src="https://i.imgur.com/SQ4qsDN.png" alt="envelope_empresa_papelaria_personalizado">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Envelopes</h3>
+                        <p class="text-gray-600 mb-4">Envelopes personalizados para sua empresa.</p>
+                        <a href="https://wa.me/5511966063828?text=Olá! Gostaria de um orçamento para Envelopes" target="_blank" class="whatsapp-button text-white font-medium py-2 px-4 rounded-lg inline-flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Orçar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="como-funciona" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+                <span class="highlight">Como Funciona</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="step-card bg-white rounded-xl shadow-md p-8 text-center">
+                    <div class="w-20 h-20 bg-cyan rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Envie sua logo pelo WhatsApp</h3>
+                    <p class="text-gray-600">Mande sua logo e suas ideias diretamente para nosso WhatsApp e inicie o processo.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step-card bg-white rounded-xl shadow-md p-8 text-center">
+                    <div class="w-20 h-20 bg-magenta rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Receba a arte digital</h3>
+                    <p class="text-gray-600">Nossa equipe criará uma arte personalizada baseada nas suas necessidades.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="step-card bg-white rounded-xl shadow-md p-8 text-center">
+                    <div class="w-20 h-20 bg-yellow rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-gray-800 text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Aprove e receba na sua casa</h3>
+                    <p class="text-gray-600">Após sua aprovação, produzimos e enviamos diretamente para você.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <div class="inline-block bg-white rounded-lg shadow-md p-6 max-w-2xl">
+                    <p class="text-xl font-medium mb-2">Prazo rápido e atendimento humanizado</p>
+                    <p class="text-gray-600">Entendemos a importância do seu tempo. Por isso, oferecemos prazos ágeis e um atendimento personalizado para cada cliente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+                <span class="highlight">Depoimentos</span>
+            </h2>
+            <p class="text-xl text-center mb-12">Quem já imprimiu com a gente, recomenda!</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white rounded-xl shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-cyan rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">MC</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Maria Costa</h4>
+                            <p class="text-gray-600 text-sm">Empresária</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Os cartões de visita ficaram perfeitos! A qualidade da impressão superou minhas expectativas e o atendimento foi excelente. Recomendo!"</p>
+                    <div class="mt-4 flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white rounded-xl shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-magenta rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">RS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Ricardo Silva</h4>
+                            <p class="text-gray-600 text-sm">Arquiteto</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"As pastas personalizadas para meu escritório ficaram impecáveis. Entrega rápida e material de primeira qualidade. Já estou planejando meu próximo pedido!"</p>
+                    <div class="mt-4 flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white rounded-xl shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-yellow rounded-full flex items-center justify-center mr-4">
+                            <span class="text-gray-800 font-bold">AP</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Ana Paula</h4>
+                            <p class="text-gray-600 text-sm">Designer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Como designer, sou muito exigente com impressões. A Papelprint entregou exatamente o que eu precisava, com cores fiéis e acabamento perfeito. Parceria de longo prazo!"</p>
+                    <div class="mt-4 flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 cmyk-gradient">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Pronto para dar vida às suas ideias?</h2>
+            <p class="text-white text-xl mb-8 max-w-2xl mx-auto">Entre em contato agora mesmo e transforme sua visão em realidade com a qualidade Papelprint.</p>
+            <a href="https://wa.me/5511966063828" target="_blank" class="bg-white text-gray-800 font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg hover:bg-gray-100 transition-all duration-300">
+                <i class="fab fa-whatsapp text-2xl mr-3 text-green-500"></i>
+                Iniciar Projeto Agora
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato" class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contato</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp mr-3 text-green-400"></i>
+                            <a href="https://wa.me/5511966063828" target="_blank" class="hover:text-cyan">WhatsApp</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-instagram mr-3 text-pink-400"></i>
+                            <a href="https://www.instagram.com/papelprintgrafica/" target="_blank" class="hover:text-magenta">@papelprintgrafica</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="far fa-envelope mr-3 text-yellow"></i>
+                            <a href="mailto:contato@papelprint.com.br" class="hover:text-yellow">contato@papelprint.com.br</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-cyan">Home</a></li>
+                        <li><a href="#produtos" class="hover:text-magenta">Produtos</a></li>
+                        <li><a href="#como-funciona" class="hover:text-yellow">Como Funciona</a></li>
+                        <li><a href="#depoimentos" class="hover:text-cyan">Depoimentos</a></li>
+                        <li><a href="#catalogo" class="hover:text-magenta">Catálogo Completo</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Payment Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Informações</h3>
+                    <p class="mb-4">Aceitamos Pix e Cartão. Entrega em todo o Brasil.</p>
+                    <div class="flex space-x-3">
+                        <i class="fas fa-money-bill-wave text-2xl text-green-400"></i>
+                        <i class="far fa-credit-card text-2xl text-blue-400"></i>
+                        <i class="fas fa-truck text-2xl text-yellow"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 Papelprint Gráfica. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Highlight active nav item on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-magenta');
+                link.classList.add('text-gray-700');
+                
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.remove('text-gray-700');
+                    link.classList.add('text-magenta');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
